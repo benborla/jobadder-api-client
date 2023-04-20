@@ -7,12 +7,12 @@
         "psr/log": "^3.0",
         "psr/http-message": "^1.0",
         "symfony/serializer": "^6.0.0",
-        "jane/openapi-runtime": "^7.0",
+        "jane-php/open-api-runtime": "^7.0",
         "roave/security-advisories": "dev-latest"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5.10",
-        "phpunit/php-invoker": "^4.0"
+        "phpunit/php-invoker": "^3.1.1"
     },
     "license": "MIT",
     "authors": [
@@ -30,6 +30,11 @@
     "autoload-dev": {
         "psr-4": {
             "BenBorla\\JobAdder\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
         }
     }
 }
