@@ -10,7 +10,7 @@ composer require varspool/jobadder-api-client
 
 ## Usage
 
-The namespace is `Varspool\JobAdder`. The main client is `Varspool\JobAdder\Client`. The Client class provides access to
+The namespace is `BenBorla\JobAdder`. The main client is `BenBorla\JobAdder\Client`. The Client class provides access to
 a set of API resources:
 
 ```php
@@ -18,7 +18,7 @@ $contacts = $client->contacts()->findContacts(['limit' => 3]);
 $ads = $client->jobAds()->getJobAds();
 ```
 
-You can also access the resources directly from the `Varspool\JobAdder\V2\Resource` namespace.
+You can also access the resources directly from the `BenBorla\JobAdder\V2\Resource` namespace.
 
 ### Instantiating a Client
 
@@ -35,7 +35,7 @@ Here's how you might use a Guzzle 6 client with this library:
 
   ```php
   use GuzzleHttp\Client as GuzzleClient;
-  use Varspool\JobAdder\Client as JobAdderClient;
+  use BenBorla\JobAdder\Client as JobAdderClient;
   use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
   $guzzle = new GuzzleClient($options);

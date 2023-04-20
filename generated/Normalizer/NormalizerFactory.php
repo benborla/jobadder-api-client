@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 class NormalizerFactory
 {

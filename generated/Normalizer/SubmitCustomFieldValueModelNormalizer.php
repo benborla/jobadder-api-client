@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class SubmitCustomFieldValueModelNormalizer extends SerializerAwareNormalizer im
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class SubmitCustomFieldValueModelNormalizer extends SerializerAwareNormalizer im
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\SubmitCustomFieldValueModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\SubmitCustomFieldValueModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class SubmitCustomFieldValueModelNormalizer extends SerializerAwareNormalizer im
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\SubmitCustomFieldValueModel();
+        $object = new \BenBorla\JobAdder\V2\Model\SubmitCustomFieldValueModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }

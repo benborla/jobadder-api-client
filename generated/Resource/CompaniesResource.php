@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Resource;
+namespace BenBorla\JobAdder\V2\Resource;
 
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
@@ -24,7 +24,7 @@ class CompaniesResource extends Resource
      * }
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyListRepresentation
      */
     public function findCompanies($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -52,7 +52,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyListRepresentation', 'json');
             }
         }
 
@@ -60,7 +60,7 @@ class CompaniesResource extends Resource
     }
 
     /**
-     * @param \Varspool\JobAdder\V2\Model\AddCompanyCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddCompanyCommand $body
      * @param array                                         $parameters {
      *
      *     @var string $X-Allow-Duplicates Duplicate override code from the header of an earlier 409 response
@@ -68,9 +68,9 @@ class CompaniesResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyRepresentation|\Varspool\JobAdder\V2\Model\ErrorModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyRepresentation|\BenBorla\JobAdder\V2\Model\ErrorModel
      */
-    public function addCompany(\Varspool\JobAdder\V2\Model\AddCompanyCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addCompany(\BenBorla\JobAdder\V2\Model\AddCompanyCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('X-Allow-Duplicates', null);
@@ -87,13 +87,13 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyRepresentation', 'json');
             }
             if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
             if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
         }
 
@@ -105,7 +105,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyRepresentation|\Varspool\JobAdder\V2\Model\ErrorModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyRepresentation|\BenBorla\JobAdder\V2\Model\ErrorModel
      */
     public function getCompany($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -123,10 +123,10 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyRepresentation', 'json');
             }
             if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
         }
 
@@ -135,7 +135,7 @@ class CompaniesResource extends Resource
 
     /**
      * @param int                                              $companyId
-     * @param \Varspool\JobAdder\V2\Model\UpdateCompanyCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\UpdateCompanyCommand $body
      * @param array                                            $parameters {
      *
      *     @var string $X-Allow-Duplicates Duplicate override code from the header of an earlier 409 response
@@ -143,9 +143,9 @@ class CompaniesResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ErrorModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ErrorModel
      */
-    public function updateCompany($companyId, \Varspool\JobAdder\V2\Model\UpdateCompanyCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateCompany($companyId, \BenBorla\JobAdder\V2\Model\UpdateCompanyCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('X-Allow-Duplicates', null);
@@ -163,10 +163,10 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
             if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
         }
 
@@ -178,7 +178,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyAddressListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyAddressListRepresentation
      */
     public function getCompanyAddresses($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -196,7 +196,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyAddressListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyAddressListRepresentation', 'json');
             }
         }
 
@@ -209,7 +209,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyAddressRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyAddressRepresentation
      */
     public function getCompanyAddress($companyId, $addressId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -228,7 +228,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyAddressRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyAddressRepresentation', 'json');
             }
         }
 
@@ -240,7 +240,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ContactListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ContactListRepresentation
      */
     public function getCompanyContacts($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -258,7 +258,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ContactListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ContactListRepresentation', 'json');
             }
         }
 
@@ -270,7 +270,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\FloatListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\FloatListRepresentation
      */
     public function getCompanyFloats($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -288,7 +288,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\FloatListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\FloatListRepresentation', 'json');
             }
         }
 
@@ -300,7 +300,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\JobOrderListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\JobOrderListRepresentation
      */
     public function getCompanyJobOrders($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -318,7 +318,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
             }
         }
 
@@ -330,7 +330,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\JobOrderListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\JobOrderListRepresentation
      */
     public function getCompanyActiveJobOrders($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -348,7 +348,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
             }
         }
 
@@ -441,7 +441,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteListRepresentation
      */
     public function getCompanyNotes($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -459,7 +459,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
             }
         }
 
@@ -468,13 +468,13 @@ class CompaniesResource extends Resource
 
     /**
      * @param int                                               $companyId
-     * @param \Varspool\JobAdder\V2\Model\AddCompanyNoteCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddCompanyNoteCommand $body
      * @param array                                             $parameters List of parameters
      * @param string                                            $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteModel
      */
-    public function addCompanyNote($companyId, \Varspool\JobAdder\V2\Model\AddCompanyNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addCompanyNote($companyId, \BenBorla\JobAdder\V2\Model\AddCompanyNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/companies/{companyId}/notes';
@@ -490,7 +490,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteModel', 'json');
             }
         }
 
@@ -502,7 +502,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\PlacementListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\PlacementListRepresentation
      */
     public function getCompanyPlacements($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -520,7 +520,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\PlacementListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\PlacementListRepresentation', 'json');
             }
         }
 
@@ -532,7 +532,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\PlacementListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\PlacementListRepresentation
      */
     public function getCompanyApprovedPlacements($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -550,7 +550,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\PlacementListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\PlacementListRepresentation', 'json');
             }
         }
 
@@ -562,7 +562,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\RequisitionListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\RequisitionListRepresentation
      */
     public function getCompanyRequisitions($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -580,7 +580,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\RequisitionListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\RequisitionListRepresentation', 'json');
             }
         }
 
@@ -592,7 +592,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CategoryListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CategoryListRepresentation
      */
     public function getCompanySkills($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -610,7 +610,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CategoryListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CategoryListRepresentation', 'json');
             }
         }
 
@@ -622,7 +622,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\SubmissionListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\SubmissionListRepresentation
      */
     public function getCompanySubmissions($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -640,7 +640,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\SubmissionListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\SubmissionListRepresentation', 'json');
             }
         }
 
@@ -652,7 +652,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyListRepresentation
      */
     public function getCompanySubsidiaries($companyId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -670,7 +670,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyListRepresentation', 'json');
             }
         }
 
@@ -687,7 +687,7 @@ class CompaniesResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyWorkflowListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyWorkflowListRepresentation
      */
     public function listCompanyWorkflows($companyId, $workflowType, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -707,7 +707,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowListRepresentation', 'json');
             }
         }
 
@@ -721,7 +721,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters   List of parameters
      * @param string $fetch        Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CompanyWorkflowRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CompanyWorkflowRepresentation
      */
     public function getCompanyWorkflow($companyId, $workflowType, $workflowId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -741,7 +741,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowRepresentation', 'json');
             }
         }
 
@@ -752,7 +752,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldListRepresentation
      */
     public function getCompanyCustomFieldList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -769,7 +769,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
             }
         }
 
@@ -781,7 +781,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldRepresentation
      */
     public function getCompanyCustomFieldListItem($fieldId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -799,7 +799,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
             }
         }
 
@@ -814,7 +814,7 @@ class CompaniesResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteTypeListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteTypeListRepresentation
      */
     public function getCompanyNoteTypeList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -832,7 +832,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteTypeListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteTypeListRepresentation', 'json');
             }
         }
 
@@ -850,7 +850,7 @@ class CompaniesResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\StatusListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\StatusListRepresentation
      */
     public function getCompanyStatusList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -871,7 +871,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\StatusListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\StatusListRepresentation', 'json');
             }
         }
 
@@ -883,7 +883,7 @@ class CompaniesResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\StatusRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\StatusRepresentation
      */
     public function getCompanyStatusListItem($statusId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -901,7 +901,7 @@ class CompaniesResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\StatusRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\StatusRepresentation', 'json');
             }
         }
 

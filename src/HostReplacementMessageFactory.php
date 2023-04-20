@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder;
+namespace BenBorla\JobAdder;
 
 use Http\Message\MessageFactory;
 

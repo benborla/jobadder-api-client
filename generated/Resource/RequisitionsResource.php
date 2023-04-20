@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Resource;
+namespace BenBorla\JobAdder\V2\Resource;
 
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
@@ -31,7 +31,7 @@ class RequisitionsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\RequisitionListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\RequisitionListRepresentation
      */
     public function findRequisitions($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -65,7 +65,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\RequisitionListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\RequisitionListRepresentation', 'json');
             }
         }
 
@@ -73,13 +73,13 @@ class RequisitionsResource extends Resource
     }
 
     /**
-     * @param \Varspool\JobAdder\V2\Model\AddRequisitionCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddRequisitionCommand $body
      * @param array                                             $parameters List of parameters
      * @param string                                            $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\RequisitionRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\RequisitionRepresentation
      */
-    public function addRequisition(\Varspool\JobAdder\V2\Model\AddRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addRequisition(\BenBorla\JobAdder\V2\Model\AddRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions';
@@ -94,7 +94,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\RequisitionRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\RequisitionRepresentation', 'json');
             }
         }
 
@@ -131,7 +131,7 @@ class RequisitionsResource extends Resource
      * @param array  $parameters    List of parameters
      * @param string $fetch         Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\RequisitionRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\RequisitionRepresentation
      */
     public function getRequisition($requisitionId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -149,7 +149,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\RequisitionRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\RequisitionRepresentation', 'json');
             }
         }
 
@@ -158,13 +158,13 @@ class RequisitionsResource extends Resource
 
     /**
      * @param int                                                  $requisitionId
-     * @param \Varspool\JobAdder\V2\Model\UpdateRequisitionCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\UpdateRequisitionCommand $body
      * @param array                                                $parameters    List of parameters
      * @param string                                               $fetch         Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function updateRequisition($requisitionId, \Varspool\JobAdder\V2\Model\UpdateRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateRequisition($requisitionId, \BenBorla\JobAdder\V2\Model\UpdateRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions/{requisitionId}';
@@ -184,13 +184,13 @@ class RequisitionsResource extends Resource
 
     /**
      * @param int                                                   $requisitionId
-     * @param \Varspool\JobAdder\V2\Model\ApproveRequisitionCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\ApproveRequisitionCommand $body
      * @param array                                                 $parameters    List of parameters
      * @param string                                                $fetch         Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function approveRequisition($requisitionId, \Varspool\JobAdder\V2\Model\ApproveRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function approveRequisition($requisitionId, \BenBorla\JobAdder\V2\Model\ApproveRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions/{requisitionId}/approve';
@@ -278,7 +278,7 @@ class RequisitionsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\RequisitionHistoryModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\RequisitionHistoryModel
      */
     public function getRequisitionApprovalHistory($requisitionId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -298,7 +298,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\RequisitionHistoryModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\RequisitionHistoryModel', 'json');
             }
         }
 
@@ -310,7 +310,7 @@ class RequisitionsResource extends Resource
      * @param array  $parameters    List of parameters
      * @param string $fetch         Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteListRepresentation
      */
     public function getRequisitionNotes($requisitionId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -328,7 +328,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
             }
         }
 
@@ -337,13 +337,13 @@ class RequisitionsResource extends Resource
 
     /**
      * @param int                                                   $requisitionId
-     * @param \Varspool\JobAdder\V2\Model\AddRequisitionNoteCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddRequisitionNoteCommand $body
      * @param array                                                 $parameters    List of parameters
      * @param string                                                $fetch         Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteModel
      */
-    public function addRequisitionNote($requisitionId, \Varspool\JobAdder\V2\Model\AddRequisitionNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addRequisitionNote($requisitionId, \BenBorla\JobAdder\V2\Model\AddRequisitionNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions/{requisitionId}/notes';
@@ -359,7 +359,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteModel', 'json');
             }
         }
 
@@ -368,13 +368,13 @@ class RequisitionsResource extends Resource
 
     /**
      * @param int                                                  $requisitionId
-     * @param \Varspool\JobAdder\V2\Model\RejectRequisitionCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\RejectRequisitionCommand $body
      * @param array                                                $parameters    List of parameters
      * @param string                                               $fetch         Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function rejectRequisition($requisitionId, \Varspool\JobAdder\V2\Model\RejectRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function rejectRequisition($requisitionId, \BenBorla\JobAdder\V2\Model\RejectRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions/{requisitionId}/reject';
@@ -394,13 +394,13 @@ class RequisitionsResource extends Resource
 
     /**
      * @param int                                                  $requisitionId
-     * @param \Varspool\JobAdder\V2\Model\SubmitRequisitionCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\SubmitRequisitionCommand $body
      * @param array                                                $parameters    List of parameters
      * @param string                                               $fetch         Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function submitRequisition($requisitionId, \Varspool\JobAdder\V2\Model\SubmitRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function submitRequisition($requisitionId, \BenBorla\JobAdder\V2\Model\SubmitRequisitionCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/requisitions/{requisitionId}/submit';
@@ -426,7 +426,7 @@ class RequisitionsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\StandardFieldListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\StandardFieldListRepresentation
      */
     public function getRequisitionStandardFieldList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -444,7 +444,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\StandardFieldListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\StandardFieldListRepresentation', 'json');
             }
         }
 
@@ -455,7 +455,7 @@ class RequisitionsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldListRepresentation
      */
     public function getRequisitionCustomFieldList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -472,7 +472,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
             }
         }
 
@@ -484,7 +484,7 @@ class RequisitionsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldRepresentation
      */
     public function getRequisitionCustomFieldItem($fieldId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -502,7 +502,7 @@ class RequisitionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
             }
         }
 

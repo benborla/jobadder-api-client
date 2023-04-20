@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CompanyLinksNormalizer extends SerializerAwareNormalizer implements Denorm
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CompanyLinks') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CompanyLinks') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CompanyLinksNormalizer extends SerializerAwareNormalizer implements Denorm
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CompanyLinks) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CompanyLinks) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class CompanyLinksNormalizer extends SerializerAwareNormalizer implements Denorm
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CompanyLinks();
+        $object = new \BenBorla\JobAdder\V2\Model\CompanyLinks();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -73,7 +73,7 @@ class CompanyLinksNormalizer extends SerializerAwareNormalizer implements Denorm
             $object->setPlacements($data->{'placements'});
         }
         if (property_exists($data, 'workflows')) {
-            $object->setWorkflows($this->serializer->deserialize($data->{'workflows'}, 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowLinks', 'raw', $context));
+            $object->setWorkflows($this->serializer->deserialize($data->{'workflows'}, 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowLinks', 'raw', $context));
         }
 
         return $object;

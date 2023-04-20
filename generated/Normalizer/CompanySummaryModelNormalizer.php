@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CompanySummaryModelNormalizer extends SerializerAwareNormalizer implements
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CompanySummaryModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CompanySummaryModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CompanySummaryModelNormalizer extends SerializerAwareNormalizer implements
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CompanySummaryModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CompanySummaryModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class CompanySummaryModelNormalizer extends SerializerAwareNormalizer implements
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CompanySummaryModel();
+        $object = new \BenBorla\JobAdder\V2\Model\CompanySummaryModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,22 +43,22 @@ class CompanySummaryModelNormalizer extends SerializerAwareNormalizer implements
             $object->setName($data->{'name'});
         }
         if (property_exists($data, 'status')) {
-            $object->setStatus($this->serializer->deserialize($data->{'status'}, 'Varspool\\JobAdder\\V2\\Model\\StatusModel', 'raw', $context));
+            $object->setStatus($this->serializer->deserialize($data->{'status'}, 'BenBorla\\JobAdder\\V2\\Model\\StatusModel', 'raw', $context));
         }
         if (property_exists($data, 'createdBy')) {
-            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'createdAt'}));
         }
         if (property_exists($data, 'updatedBy')) {
-            $object->setUpdatedBy($this->serializer->deserialize($data->{'updatedBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setUpdatedBy($this->serializer->deserialize($data->{'updatedBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'updatedAt')) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updatedAt'}));
         }
         if (property_exists($data, 'mainContact')) {
-            $object->setMainContact($this->serializer->deserialize($data->{'mainContact'}, 'Varspool\\JobAdder\\V2\\Model\\ContactNameModel', 'raw', $context));
+            $object->setMainContact($this->serializer->deserialize($data->{'mainContact'}, 'BenBorla\\JobAdder\\V2\\Model\\ContactNameModel', 'raw', $context));
         }
 
         return $object;

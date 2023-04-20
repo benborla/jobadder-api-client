@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class NoteAttachmentRepresentationNormalizer extends SerializerAwareNormalizer i
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\NoteAttachmentRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\NoteAttachmentRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class NoteAttachmentRepresentationNormalizer extends SerializerAwareNormalizer i
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\NoteAttachmentRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\NoteAttachmentRepresentation) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class NoteAttachmentRepresentationNormalizer extends SerializerAwareNormalizer i
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\NoteAttachmentRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\NoteAttachmentRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,13 +43,13 @@ class NoteAttachmentRepresentationNormalizer extends SerializerAwareNormalizer i
             $object->setFileType($data->{'fileType'});
         }
         if (property_exists($data, 'createdBy')) {
-            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'createdAt'}));
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\NoteAttachentLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\NoteAttachentLinks', 'raw', $context));
         }
 
         return $object;

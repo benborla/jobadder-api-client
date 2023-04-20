@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CompanyWorkflowRepresentationNormalizer extends SerializerAwareNormalizer 
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CompanyWorkflowRepresentationNormalizer extends SerializerAwareNormalizer 
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CompanyWorkflowRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CompanyWorkflowRepresentation) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class CompanyWorkflowRepresentationNormalizer extends SerializerAwareNormalizer 
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CompanyWorkflowRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\CompanyWorkflowRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -45,12 +45,12 @@ class CompanyWorkflowRepresentationNormalizer extends SerializerAwareNormalizer 
         if (property_exists($data, 'approvers')) {
             $values = [];
             foreach ($data->{'approvers'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowApproverModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowApproverModel', 'raw', $context);
             }
             $object->setApprovers($values);
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
         }
 
         return $object;

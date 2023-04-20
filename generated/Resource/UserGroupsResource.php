@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Resource;
+namespace BenBorla\JobAdder\V2\Resource;
 
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
@@ -18,7 +18,7 @@ class UserGroupsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\UserGroupListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\UserGroupListRepresentation
      */
     public function findUserGroups($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -39,7 +39,7 @@ class UserGroupsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\UserGroupListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\UserGroupListRepresentation', 'json');
             }
         }
 
@@ -51,7 +51,7 @@ class UserGroupsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\UserGroupRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\UserGroupRepresentation
      */
     public function getUserGroup($groupId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -69,7 +69,7 @@ class UserGroupsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\UserGroupRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\UserGroupRepresentation', 'json');
             }
         }
 
@@ -81,7 +81,7 @@ class UserGroupsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\UserListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\UserListRepresentation
      */
     public function getGroupUsers($groupId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -99,7 +99,7 @@ class UserGroupsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\UserListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\UserListRepresentation', 'json');
             }
         }
 

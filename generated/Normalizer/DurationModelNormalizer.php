@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class DurationModelNormalizer extends SerializerAwareNormalizer implements Denor
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\DurationModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\DurationModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class DurationModelNormalizer extends SerializerAwareNormalizer implements Denor
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\DurationModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\DurationModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class DurationModelNormalizer extends SerializerAwareNormalizer implements Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\DurationModel();
+        $object = new \BenBorla\JobAdder\V2\Model\DurationModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }

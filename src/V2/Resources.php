@@ -1,22 +1,22 @@
 <?php
 
-namespace Varspool\JobAdder\V2;
+namespace BenBorla\JobAdder\V2;
 
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
-use Varspool\JobAdder\V2\Resource\CandidateFloatsResource;
-use Varspool\JobAdder\V2\Resource\CandidatesResource;
-use Varspool\JobAdder\V2\Resource\CandidateSubmissionsResource;
-use Varspool\JobAdder\V2\Resource\CategoriesResource;
-use Varspool\JobAdder\V2\Resource\ContactsResource;
-use Varspool\JobAdder\V2\Resource\IndexResource;
-use Varspool\JobAdder\V2\Resource\JobAdsResource;
-use Varspool\JobAdder\V2\Resource\JobApplicationsResource;
-use Varspool\JobAdder\V2\Resource\JobsResource;
-use Varspool\JobAdder\V2\Resource\NotesResource;
-use Varspool\JobAdder\V2\Resource\PlacementsResource;
-use Varspool\JobAdder\V2\Resource\RequisitionsResource;
-use Varspool\JobAdder\V2\Resource\UserGroupsResource;
-use Varspool\JobAdder\V2\Resource\UsersResource;
+use BenBorla\JobAdder\V2\Resource\CandidateFloatsResource;
+use BenBorla\JobAdder\V2\Resource\CandidatesResource;
+use BenBorla\JobAdder\V2\Resource\CandidateSubmissionsResource;
+use BenBorla\JobAdder\V2\Resource\CategoriesResource;
+use BenBorla\JobAdder\V2\Resource\ContactsResource;
+use BenBorla\JobAdder\V2\Resource\IndexResource;
+use BenBorla\JobAdder\V2\Resource\JobAdsResource;
+use BenBorla\JobAdder\V2\Resource\JobApplicationsResource;
+use BenBorla\JobAdder\V2\Resource\JobsResource;
+use BenBorla\JobAdder\V2\Resource\NotesResource;
+use BenBorla\JobAdder\V2\Resource\PlacementsResource;
+use BenBorla\JobAdder\V2\Resource\RequisitionsResource;
+use BenBorla\JobAdder\V2\Resource\UserGroupsResource;
+use BenBorla\JobAdder\V2\Resource\UsersResource;
 
 abstract class Resources extends Resource
 {

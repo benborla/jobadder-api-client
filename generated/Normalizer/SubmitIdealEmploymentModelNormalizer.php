@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class SubmitIdealEmploymentModelNormalizer extends SerializerAwareNormalizer imp
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\SubmitIdealEmploymentModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\SubmitIdealEmploymentModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class SubmitIdealEmploymentModelNormalizer extends SerializerAwareNormalizer imp
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\SubmitIdealEmploymentModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\SubmitIdealEmploymentModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class SubmitIdealEmploymentModelNormalizer extends SerializerAwareNormalizer imp
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\SubmitIdealEmploymentModel();
+        $object = new \BenBorla\JobAdder\V2\Model\SubmitIdealEmploymentModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,12 +43,12 @@ class SubmitIdealEmploymentModelNormalizer extends SerializerAwareNormalizer imp
             $object->setWorkTypeId($data->{'workTypeId'});
         }
         if (property_exists($data, 'salary')) {
-            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'Varspool\\JobAdder\\V2\\Model\\SalaryRangeModel', 'raw', $context));
+            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'BenBorla\\JobAdder\\V2\\Model\\SalaryRangeModel', 'raw', $context));
         }
         if (property_exists($data, 'other')) {
             $values = [];
             foreach ($data->{'other'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\SubmitIdealSalaryModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\SubmitIdealSalaryModel', 'raw', $context);
             }
             $object->setOther($values);
         }

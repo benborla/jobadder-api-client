@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class JobOrderLocationModelNormalizer extends SerializerAwareNormalizer implemen
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\JobOrderLocationModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\JobOrderLocationModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class JobOrderLocationModelNormalizer extends SerializerAwareNormalizer implemen
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\JobOrderLocationModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\JobOrderLocationModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class JobOrderLocationModelNormalizer extends SerializerAwareNormalizer implemen
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\JobOrderLocationModel();
+        $object = new \BenBorla\JobAdder\V2\Model\JobOrderLocationModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,7 +43,7 @@ class JobOrderLocationModelNormalizer extends SerializerAwareNormalizer implemen
             $object->setName($data->{'name'});
         }
         if (property_exists($data, 'area')) {
-            $object->setArea($this->serializer->deserialize($data->{'area'}, 'Varspool\\JobAdder\\V2\\Model\\JobOrderLocationAreaModel', 'raw', $context));
+            $object->setArea($this->serializer->deserialize($data->{'area'}, 'BenBorla\\JobAdder\\V2\\Model\\JobOrderLocationAreaModel', 'raw', $context));
         }
 
         return $object;

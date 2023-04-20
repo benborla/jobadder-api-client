@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Resource;
+namespace BenBorla\JobAdder\V2\Resource;
 
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
@@ -21,7 +21,7 @@ class CandidateSubmissionsResource extends Resource
      * }
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\SubmissionListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\SubmissionListRepresentation
      */
     public function findSubmissions($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -46,7 +46,7 @@ class CandidateSubmissionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\SubmissionListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\SubmissionListRepresentation', 'json');
             }
         }
 
@@ -58,7 +58,7 @@ class CandidateSubmissionsResource extends Resource
      * @param array  $parameters   List of parameters
      * @param string $fetch        Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\SubmissionRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\SubmissionRepresentation
      */
     public function getSubmission($submissionId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -76,7 +76,7 @@ class CandidateSubmissionsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\SubmissionRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\SubmissionRepresentation', 'json');
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class SubmitCurrentEmploymentModelNormalizer extends SerializerAwareNormalizer i
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\SubmitCurrentEmploymentModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\SubmitCurrentEmploymentModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class SubmitCurrentEmploymentModelNormalizer extends SerializerAwareNormalizer i
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\SubmitCurrentEmploymentModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\SubmitCurrentEmploymentModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class SubmitCurrentEmploymentModelNormalizer extends SerializerAwareNormalizer i
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\SubmitCurrentEmploymentModel();
+        $object = new \BenBorla\JobAdder\V2\Model\SubmitCurrentEmploymentModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -46,7 +46,7 @@ class SubmitCurrentEmploymentModelNormalizer extends SerializerAwareNormalizer i
             $object->setWorkTypeId($data->{'workTypeId'});
         }
         if (property_exists($data, 'salary')) {
-            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'Varspool\\JobAdder\\V2\\Model\\SalaryModel', 'raw', $context));
+            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'BenBorla\\JobAdder\\V2\\Model\\SalaryModel', 'raw', $context));
         }
 
         return $object;

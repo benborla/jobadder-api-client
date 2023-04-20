@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class PlacementBillingModelNormalizer extends SerializerAwareNormalizer implemen
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\PlacementBillingModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\PlacementBillingModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class PlacementBillingModelNormalizer extends SerializerAwareNormalizer implemen
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\PlacementBillingModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\PlacementBillingModel) {
             return true;
         }
 
@@ -32,15 +32,15 @@ class PlacementBillingModelNormalizer extends SerializerAwareNormalizer implemen
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\PlacementBillingModel();
+        $object = new \BenBorla\JobAdder\V2\Model\PlacementBillingModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'contact')) {
-            $object->setContact($this->serializer->deserialize($data->{'contact'}, 'Varspool\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context));
+            $object->setContact($this->serializer->deserialize($data->{'contact'}, 'BenBorla\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'address')) {
-            $object->setAddress($this->serializer->deserialize($data->{'address'}, 'Varspool\\JobAdder\\V2\\Model\\CompanyAddressModel', 'raw', $context));
+            $object->setAddress($this->serializer->deserialize($data->{'address'}, 'BenBorla\\JobAdder\\V2\\Model\\CompanyAddressModel', 'raw', $context));
         }
         if (property_exists($data, 'orderRef')) {
             $object->setOrderRef($data->{'orderRef'});

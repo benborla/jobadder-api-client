@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class FloatRepresentationNormalizer extends SerializerAwareNormalizer implements
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\FloatRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\FloatRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class FloatRepresentationNormalizer extends SerializerAwareNormalizer implements
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\FloatRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\FloatRepresentation) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class FloatRepresentationNormalizer extends SerializerAwareNormalizer implements
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\FloatRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\FloatRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,19 +43,19 @@ class FloatRepresentationNormalizer extends SerializerAwareNormalizer implements
             $object->setJobTitle($data->{'jobTitle'});
         }
         if (property_exists($data, 'candidate')) {
-            $object->setCandidate($this->serializer->deserialize($data->{'candidate'}, 'Varspool\\JobAdder\\V2\\Model\\CandidateSummaryModel', 'raw', $context));
+            $object->setCandidate($this->serializer->deserialize($data->{'candidate'}, 'BenBorla\\JobAdder\\V2\\Model\\CandidateSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'company')) {
-            $object->setCompany($this->serializer->deserialize($data->{'company'}, 'Varspool\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context));
+            $object->setCompany($this->serializer->deserialize($data->{'company'}, 'BenBorla\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdBy')) {
-            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'createdAt'}));
         }
         if (property_exists($data, 'updatedBy')) {
-            $object->setUpdatedBy($this->serializer->deserialize($data->{'updatedBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setUpdatedBy($this->serializer->deserialize($data->{'updatedBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'updatedAt')) {
             $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'updatedAt'}));
@@ -66,15 +66,15 @@ class FloatRepresentationNormalizer extends SerializerAwareNormalizer implements
         if (property_exists($data, 'contacts')) {
             $values = [];
             foreach ($data->{'contacts'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context);
             }
             $object->setContacts($values);
         }
         if (property_exists($data, 'owner')) {
-            $object->setOwner($this->serializer->deserialize($data->{'owner'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setOwner($this->serializer->deserialize($data->{'owner'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\FloatLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\FloatLinks', 'raw', $context));
         }
 
         return $object;

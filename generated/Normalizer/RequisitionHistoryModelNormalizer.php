@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class RequisitionHistoryModelNormalizer extends SerializerAwareNormalizer implem
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\RequisitionHistoryModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\RequisitionHistoryModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class RequisitionHistoryModelNormalizer extends SerializerAwareNormalizer implem
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\RequisitionHistoryModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\RequisitionHistoryModel) {
             return true;
         }
 
@@ -32,14 +32,14 @@ class RequisitionHistoryModelNormalizer extends SerializerAwareNormalizer implem
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\RequisitionHistoryModel();
+        $object = new \BenBorla\JobAdder\V2\Model\RequisitionHistoryModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'items')) {
             $values = [];
             foreach ($data->{'items'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\RequisitionLogModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\RequisitionLogModel', 'raw', $context);
             }
             $object->setItems($values);
         }

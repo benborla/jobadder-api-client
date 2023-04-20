@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CompanyWorkflowModelNormalizer extends SerializerAwareNormalizer implement
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CompanyWorkflowModelNormalizer extends SerializerAwareNormalizer implement
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CompanyWorkflowModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CompanyWorkflowModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class CompanyWorkflowModelNormalizer extends SerializerAwareNormalizer implement
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CompanyWorkflowModel();
+        $object = new \BenBorla\JobAdder\V2\Model\CompanyWorkflowModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -45,7 +45,7 @@ class CompanyWorkflowModelNormalizer extends SerializerAwareNormalizer implement
         if (property_exists($data, 'approvers')) {
             $values = [];
             foreach ($data->{'approvers'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\CompanyWorkflowApproverModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\CompanyWorkflowApproverModel', 'raw', $context);
             }
             $object->setApprovers($values);
         }

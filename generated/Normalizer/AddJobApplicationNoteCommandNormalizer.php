@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class AddJobApplicationNoteCommandNormalizer extends SerializerAwareNormalizer i
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\AddJobApplicationNoteCommand') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\AddJobApplicationNoteCommand') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class AddJobApplicationNoteCommandNormalizer extends SerializerAwareNormalizer i
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\AddJobApplicationNoteCommand) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\AddJobApplicationNoteCommand) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class AddJobApplicationNoteCommandNormalizer extends SerializerAwareNormalizer i
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\AddJobApplicationNoteCommand();
+        $object = new \BenBorla\JobAdder\V2\Model\AddJobApplicationNoteCommand();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }

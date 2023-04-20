@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class UpdateRequisitionCommandNormalizer extends SerializerAwareNormalizer imple
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\UpdateRequisitionCommand') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\UpdateRequisitionCommand') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class UpdateRequisitionCommandNormalizer extends SerializerAwareNormalizer imple
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\UpdateRequisitionCommand) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\UpdateRequisitionCommand) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class UpdateRequisitionCommandNormalizer extends SerializerAwareNormalizer imple
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\UpdateRequisitionCommand();
+        $object = new \BenBorla\JobAdder\V2\Model\UpdateRequisitionCommand();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -46,25 +46,25 @@ class UpdateRequisitionCommandNormalizer extends SerializerAwareNormalizer imple
             $object->setJobDescription($data->{'jobDescription'});
         }
         if (property_exists($data, 'category')) {
-            $object->setCategory($this->serializer->deserialize($data->{'category'}, 'Varspool\\JobAdder\\V2\\Model\\SubmitCategoryModel', 'raw', $context));
+            $object->setCategory($this->serializer->deserialize($data->{'category'}, 'BenBorla\\JobAdder\\V2\\Model\\SubmitCategoryModel', 'raw', $context));
         }
         if (property_exists($data, 'location')) {
-            $object->setLocation($this->serializer->deserialize($data->{'location'}, 'Varspool\\JobAdder\\V2\\Model\\SubmitLocationModel', 'raw', $context));
+            $object->setLocation($this->serializer->deserialize($data->{'location'}, 'BenBorla\\JobAdder\\V2\\Model\\SubmitLocationModel', 'raw', $context));
         }
         if (property_exists($data, 'workplaceAddressId')) {
             $object->setWorkplaceAddressId($data->{'workplaceAddressId'});
         }
         if (property_exists($data, 'start')) {
-            $object->setStart($this->serializer->deserialize($data->{'start'}, 'Varspool\\JobAdder\\V2\\Model\\StartModel', 'raw', $context));
+            $object->setStart($this->serializer->deserialize($data->{'start'}, 'BenBorla\\JobAdder\\V2\\Model\\StartModel', 'raw', $context));
         }
         if (property_exists($data, 'duration')) {
-            $object->setDuration($this->serializer->deserialize($data->{'duration'}, 'Varspool\\JobAdder\\V2\\Model\\DurationModel', 'raw', $context));
+            $object->setDuration($this->serializer->deserialize($data->{'duration'}, 'BenBorla\\JobAdder\\V2\\Model\\DurationModel', 'raw', $context));
         }
         if (property_exists($data, 'workTypeId')) {
             $object->setWorkTypeId($data->{'workTypeId'});
         }
         if (property_exists($data, 'salary')) {
-            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'Varspool\\JobAdder\\V2\\Model\\JobOrderSalaryRangeModel', 'raw', $context));
+            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'BenBorla\\JobAdder\\V2\\Model\\JobOrderSalaryRangeModel', 'raw', $context));
         }
         if (property_exists($data, 'numberOfJobs')) {
             $object->setNumberOfJobs($data->{'numberOfJobs'});
@@ -75,7 +75,7 @@ class UpdateRequisitionCommandNormalizer extends SerializerAwareNormalizer imple
         if (property_exists($data, 'customFields')) {
             $values = [];
             foreach ($data->{'customFields'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
             }
             $object->setCustomFields($values);
         }

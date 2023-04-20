@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class NoteAttachmentModelNormalizer extends SerializerAwareNormalizer implements
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\NoteAttachmentModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\NoteAttachmentModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class NoteAttachmentModelNormalizer extends SerializerAwareNormalizer implements
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\NoteAttachmentModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\NoteAttachmentModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class NoteAttachmentModelNormalizer extends SerializerAwareNormalizer implements
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\NoteAttachmentModel();
+        $object = new \BenBorla\JobAdder\V2\Model\NoteAttachmentModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -46,7 +46,7 @@ class NoteAttachmentModelNormalizer extends SerializerAwareNormalizer implements
             $object->setFileType($data->{'fileType'});
         }
         if (property_exists($data, 'createdBy')) {
-            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'createdAt'}));

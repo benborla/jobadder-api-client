@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class NoteTypeModelNormalizer extends SerializerAwareNormalizer implements Denor
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\NoteTypeModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\NoteTypeModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class NoteTypeModelNormalizer extends SerializerAwareNormalizer implements Denor
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\NoteTypeModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\NoteTypeModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class NoteTypeModelNormalizer extends SerializerAwareNormalizer implements Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\NoteTypeModel();
+        $object = new \BenBorla\JobAdder\V2\Model\NoteTypeModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -40,7 +40,7 @@ class NoteTypeModelNormalizer extends SerializerAwareNormalizer implements Denor
             $object->setName($data->{'name'});
         }
         if (property_exists($data, 'default')) {
-            $object->setDefault($this->serializer->deserialize($data->{'default'}, 'Varspool\\JobAdder\\V2\\Model\\NoteTypeDefaultModel', 'raw', $context));
+            $object->setDefault($this->serializer->deserialize($data->{'default'}, 'BenBorla\\JobAdder\\V2\\Model\\NoteTypeDefaultModel', 'raw', $context));
         }
 
         return $object;

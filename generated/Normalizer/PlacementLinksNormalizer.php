@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class PlacementLinksNormalizer extends SerializerAwareNormalizer implements Deno
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\PlacementLinks') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\PlacementLinks') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class PlacementLinksNormalizer extends SerializerAwareNormalizer implements Deno
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\PlacementLinks) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\PlacementLinks) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class PlacementLinksNormalizer extends SerializerAwareNormalizer implements Deno
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\PlacementLinks();
+        $object = new \BenBorla\JobAdder\V2\Model\PlacementLinks();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }

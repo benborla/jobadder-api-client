@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder;
+namespace BenBorla\JobAdder;
 
 use Http\Message\MessageFactory;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
@@ -9,8 +9,8 @@ use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
-use Varspool\JobAdder\V2\Normalizer\NormalizerFactory;
-use Varspool\JobAdder\V2\Resources;
+use BenBorla\JobAdder\V2\Normalizer\NormalizerFactory;
+use BenBorla\JobAdder\V2\Resources;
 
 class Client extends Resources
 {

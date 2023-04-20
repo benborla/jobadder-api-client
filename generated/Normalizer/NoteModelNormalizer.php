@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class NoteModelNormalizer extends SerializerAwareNormalizer implements Denormali
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\NoteModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\NoteModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class NoteModelNormalizer extends SerializerAwareNormalizer implements Denormali
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\NoteModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\NoteModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class NoteModelNormalizer extends SerializerAwareNormalizer implements Denormali
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\NoteModel();
+        $object = new \BenBorla\JobAdder\V2\Model\NoteModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -54,61 +54,61 @@ class NoteModelNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'attachments')) {
             $values = [];
             foreach ($data->{'attachments'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\NoteAttachmentModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\NoteAttachmentModel', 'raw', $context);
             }
             $object->setAttachments($values);
         }
         if (property_exists($data, 'jobs')) {
             $values_1 = [];
             foreach ($data->{'jobs'} as $value_1) {
-                $values_1[] = $this->serializer->deserialize($value_1, 'Varspool\\JobAdder\\V2\\Model\\JobOrderSummaryModel', 'raw', $context);
+                $values_1[] = $this->serializer->deserialize($value_1, 'BenBorla\\JobAdder\\V2\\Model\\JobOrderSummaryModel', 'raw', $context);
             }
             $object->setJobs($values_1);
         }
         if (property_exists($data, 'requisitions')) {
             $values_2 = [];
             foreach ($data->{'requisitions'} as $value_2) {
-                $values_2[] = $this->serializer->deserialize($value_2, 'Varspool\\JobAdder\\V2\\Model\\RequisitionSummaryModel', 'raw', $context);
+                $values_2[] = $this->serializer->deserialize($value_2, 'BenBorla\\JobAdder\\V2\\Model\\RequisitionSummaryModel', 'raw', $context);
             }
             $object->setRequisitions($values_2);
         }
         if (property_exists($data, 'candidates')) {
             $values_3 = [];
             foreach ($data->{'candidates'} as $value_3) {
-                $values_3[] = $this->serializer->deserialize($value_3, 'Varspool\\JobAdder\\V2\\Model\\CandidateSummaryModel', 'raw', $context);
+                $values_3[] = $this->serializer->deserialize($value_3, 'BenBorla\\JobAdder\\V2\\Model\\CandidateSummaryModel', 'raw', $context);
             }
             $object->setCandidates($values_3);
         }
         if (property_exists($data, 'jobApplications')) {
             $values_4 = [];
             foreach ($data->{'jobApplications'} as $value_4) {
-                $values_4[] = $this->serializer->deserialize($value_4, 'Varspool\\JobAdder\\V2\\Model\\JobApplicationSummaryModel', 'raw', $context);
+                $values_4[] = $this->serializer->deserialize($value_4, 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationSummaryModel', 'raw', $context);
             }
             $object->setJobApplications($values_4);
         }
         if (property_exists($data, 'placements')) {
             $values_5 = [];
             foreach ($data->{'placements'} as $value_5) {
-                $values_5[] = $this->serializer->deserialize($value_5, 'Varspool\\JobAdder\\V2\\Model\\PlacementSummaryModel', 'raw', $context);
+                $values_5[] = $this->serializer->deserialize($value_5, 'BenBorla\\JobAdder\\V2\\Model\\PlacementSummaryModel', 'raw', $context);
             }
             $object->setPlacements($values_5);
         }
         if (property_exists($data, 'companies')) {
             $values_6 = [];
             foreach ($data->{'companies'} as $value_6) {
-                $values_6[] = $this->serializer->deserialize($value_6, 'Varspool\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context);
+                $values_6[] = $this->serializer->deserialize($value_6, 'BenBorla\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context);
             }
             $object->setCompanies($values_6);
         }
         if (property_exists($data, 'contacts')) {
             $values_7 = [];
             foreach ($data->{'contacts'} as $value_7) {
-                $values_7[] = $this->serializer->deserialize($value_7, 'Varspool\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context);
+                $values_7[] = $this->serializer->deserialize($value_7, 'BenBorla\\JobAdder\\V2\\Model\\ContactSummaryModel', 'raw', $context);
             }
             $object->setContacts($values_7);
         }
         if (property_exists($data, 'createdBy')) {
-            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'Varspool\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
+            $object->setCreatedBy($this->serializer->deserialize($data->{'createdBy'}, 'BenBorla\\JobAdder\\V2\\Model\\UserSummaryModel', 'raw', $context));
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'createdAt'}));

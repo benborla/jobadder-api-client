@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class LocationModelNormalizer extends SerializerAwareNormalizer implements Denor
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\LocationModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\LocationModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class LocationModelNormalizer extends SerializerAwareNormalizer implements Denor
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\LocationModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\LocationModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class LocationModelNormalizer extends SerializerAwareNormalizer implements Denor
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\LocationModel();
+        $object = new \BenBorla\JobAdder\V2\Model\LocationModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -45,7 +45,7 @@ class LocationModelNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'areas')) {
             $values = [];
             foreach ($data->{'areas'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\LocationAreaModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\LocationAreaModel', 'raw', $context);
             }
             $object->setAreas($values);
         }

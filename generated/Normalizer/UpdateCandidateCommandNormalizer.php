@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class UpdateCandidateCommandNormalizer extends SerializerAwareNormalizer impleme
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\UpdateCandidateCommand') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\UpdateCandidateCommand') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class UpdateCandidateCommandNormalizer extends SerializerAwareNormalizer impleme
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\UpdateCandidateCommand) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\UpdateCandidateCommand) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class UpdateCandidateCommandNormalizer extends SerializerAwareNormalizer impleme
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\UpdateCandidateCommand();
+        $object = new \BenBorla\JobAdder\V2\Model\UpdateCandidateCommand();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -59,7 +59,7 @@ class UpdateCandidateCommandNormalizer extends SerializerAwareNormalizer impleme
             $object->setSocial($values);
         }
         if (property_exists($data, 'address')) {
-            $object->setAddress($this->serializer->deserialize($data->{'address'}, 'Varspool\\JobAdder\\V2\\Model\\SubmitAddressModel', 'raw', $context));
+            $object->setAddress($this->serializer->deserialize($data->{'address'}, 'BenBorla\\JobAdder\\V2\\Model\\SubmitAddressModel', 'raw', $context));
         }
         if (property_exists($data, 'skillTags')) {
             $values_1 = [];
@@ -69,15 +69,15 @@ class UpdateCandidateCommandNormalizer extends SerializerAwareNormalizer impleme
             $object->setSkillTags($values_1);
         }
         if (property_exists($data, 'employment')) {
-            $object->setEmployment($this->serializer->deserialize($data->{'employment'}, 'Varspool\\JobAdder\\V2\\Model\\SubmitEmploymentModel', 'raw', $context));
+            $object->setEmployment($this->serializer->deserialize($data->{'employment'}, 'BenBorla\\JobAdder\\V2\\Model\\SubmitEmploymentModel', 'raw', $context));
         }
         if (property_exists($data, 'availability')) {
-            $object->setAvailability($this->serializer->deserialize($data->{'availability'}, 'Varspool\\JobAdder\\V2\\Model\\StartModel', 'raw', $context));
+            $object->setAvailability($this->serializer->deserialize($data->{'availability'}, 'BenBorla\\JobAdder\\V2\\Model\\StartModel', 'raw', $context));
         }
         if (property_exists($data, 'customFields')) {
             $values_2 = [];
             foreach ($data->{'customFields'} as $value_2) {
-                $values_2[] = $this->serializer->deserialize($value_2, 'Varspool\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
+                $values_2[] = $this->serializer->deserialize($value_2, 'BenBorla\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
             }
             $object->setCustomFields($values_2);
         }

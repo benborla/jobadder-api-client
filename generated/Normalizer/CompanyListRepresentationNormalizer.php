@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CompanyListRepresentationNormalizer extends SerializerAwareNormalizer impl
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CompanyListRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CompanyListRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CompanyListRepresentationNormalizer extends SerializerAwareNormalizer impl
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CompanyListRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CompanyListRepresentation) {
             return true;
         }
 
@@ -32,14 +32,14 @@ class CompanyListRepresentationNormalizer extends SerializerAwareNormalizer impl
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CompanyListRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\CompanyListRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'items')) {
             $values = [];
             foreach ($data->{'items'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\CompanySummaryModel', 'raw', $context);
             }
             $object->setItems($values);
         }
@@ -47,7 +47,7 @@ class CompanyListRepresentationNormalizer extends SerializerAwareNormalizer impl
             $object->setTotalCount($data->{'totalCount'});
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\PageLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\PageLinks', 'raw', $context));
         }
 
         return $object;

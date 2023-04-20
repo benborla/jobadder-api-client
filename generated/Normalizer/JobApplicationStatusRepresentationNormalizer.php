@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class JobApplicationStatusRepresentationNormalizer extends SerializerAwareNormal
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\JobApplicationStatusRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationStatusRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class JobApplicationStatusRepresentationNormalizer extends SerializerAwareNormal
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\JobApplicationStatusRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\JobApplicationStatusRepresentation) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class JobApplicationStatusRepresentationNormalizer extends SerializerAwareNormal
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\JobApplicationStatusRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\JobApplicationStatusRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -49,10 +49,10 @@ class JobApplicationStatusRepresentationNormalizer extends SerializerAwareNormal
             $object->setDefault($data->{'default'});
         }
         if (property_exists($data, 'workflow')) {
-            $object->setWorkflow($this->serializer->deserialize($data->{'workflow'}, 'Varspool\\JobAdder\\V2\\Model\\JobApplicationWorkflowModel', 'raw', $context));
+            $object->setWorkflow($this->serializer->deserialize($data->{'workflow'}, 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationWorkflowModel', 'raw', $context));
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\JobApplicationStatusLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationStatusLinks', 'raw', $context));
         }
 
         return $object;

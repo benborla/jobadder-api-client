@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class StandardFieldListRepresentationNormalizer extends SerializerAwareNormalize
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\StandardFieldListRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\StandardFieldListRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class StandardFieldListRepresentationNormalizer extends SerializerAwareNormalize
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\StandardFieldListRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\StandardFieldListRepresentation) {
             return true;
         }
 
@@ -32,19 +32,19 @@ class StandardFieldListRepresentationNormalizer extends SerializerAwareNormalize
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\StandardFieldListRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\StandardFieldListRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'items')) {
             $values = [];
             foreach ($data->{'items'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\StandardFieldModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\StandardFieldModel', 'raw', $context);
             }
             $object->setItems($values);
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
         }
 
         return $object;

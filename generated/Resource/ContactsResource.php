@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Resource;
+namespace BenBorla\JobAdder\V2\Resource;
 
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Joli\Jane\OpenApi\Runtime\Client\Resource;
@@ -23,7 +23,7 @@ class ContactsResource extends Resource
      * }
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ContactListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ContactListRepresentation
      */
     public function findContacts($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -50,7 +50,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ContactListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ContactListRepresentation', 'json');
             }
         }
 
@@ -58,7 +58,7 @@ class ContactsResource extends Resource
     }
 
     /**
-     * @param \Varspool\JobAdder\V2\Model\AddContactCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddContactCommand $body
      * @param array                                         $parameters {
      *
      *     @var string $X-Allow-Duplicates Duplicate override code from the header of an earlier 409 response
@@ -66,9 +66,9 @@ class ContactsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ContactRepresentation|\Varspool\JobAdder\V2\Model\ErrorModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ContactRepresentation|\BenBorla\JobAdder\V2\Model\ErrorModel
      */
-    public function addContact(\Varspool\JobAdder\V2\Model\AddContactCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addContact(\BenBorla\JobAdder\V2\Model\AddContactCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('X-Allow-Duplicates', null);
@@ -85,13 +85,13 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ContactRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ContactRepresentation', 'json');
             }
             if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
             if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
         }
 
@@ -103,7 +103,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ContactRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ContactRepresentation
      */
     public function getContact($contactId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -121,7 +121,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ContactRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ContactRepresentation', 'json');
             }
         }
 
@@ -130,7 +130,7 @@ class ContactsResource extends Resource
 
     /**
      * @param int                                              $contactId
-     * @param \Varspool\JobAdder\V2\Model\UpdateContactCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\UpdateContactCommand $body
      * @param array                                            $parameters {
      *
      *     @var string $X-Allow-Duplicates Duplicate override code from the header of an earlier 409 response
@@ -138,9 +138,9 @@ class ContactsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\ErrorModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\ErrorModel
      */
-    public function updateContact($contactId, \Varspool\JobAdder\V2\Model\UpdateContactCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateContact($contactId, \BenBorla\JobAdder\V2\Model\UpdateContactCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('X-Allow-Duplicates', null);
@@ -158,10 +158,10 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
             if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\ErrorModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\ErrorModel', 'json');
             }
         }
 
@@ -173,7 +173,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\JobOrderListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\JobOrderListRepresentation
      */
     public function getContactJobOrders($contactId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -191,7 +191,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
             }
         }
 
@@ -203,7 +203,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\JobOrderListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\JobOrderListRepresentation
      */
     public function getContactActiveJobOrders($contactId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -221,7 +221,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\JobOrderListRepresentation', 'json');
             }
         }
 
@@ -233,7 +233,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteListRepresentation
      */
     public function getContactNotes($contactId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -251,7 +251,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteListRepresentation', 'json');
             }
         }
 
@@ -260,13 +260,13 @@ class ContactsResource extends Resource
 
     /**
      * @param int                                               $contactId
-     * @param \Varspool\JobAdder\V2\Model\AddContactNoteCommand $body
+     * @param \BenBorla\JobAdder\V2\Model\AddContactNoteCommand $body
      * @param array                                             $parameters List of parameters
      * @param string                                            $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteModel
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteModel
      */
-    public function addContactNote($contactId, \Varspool\JobAdder\V2\Model\AddContactNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function addContactNote($contactId, \BenBorla\JobAdder\V2\Model\AddContactNoteCommand $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url        = '/v2/contacts/{contactId}/notes';
@@ -282,7 +282,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteModel', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteModel', 'json');
             }
         }
 
@@ -375,7 +375,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CategoryListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CategoryListRepresentation
      */
     public function getContactSkills($contactId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -393,7 +393,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CategoryListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CategoryListRepresentation', 'json');
             }
         }
 
@@ -404,7 +404,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldListRepresentation
      */
     public function getContactCustomFieldList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -421,7 +421,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldListRepresentation', 'json');
             }
         }
 
@@ -433,7 +433,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\CustomFieldRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\CustomFieldRepresentation
      */
     public function getContactCustomFieldListItem($fieldId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -451,7 +451,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\CustomFieldRepresentation', 'json');
             }
         }
 
@@ -466,7 +466,7 @@ class ContactsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\NoteTypeListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\NoteTypeListRepresentation
      */
     public function getContactNoteTypeList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -484,7 +484,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\NoteTypeListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\NoteTypeListRepresentation', 'json');
             }
         }
 
@@ -499,7 +499,7 @@ class ContactsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\SalutationListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\SalutationListRepresentation
      */
     public function getContactSalutationList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -517,7 +517,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\SalutationListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\SalutationListRepresentation', 'json');
             }
         }
 
@@ -535,7 +535,7 @@ class ContactsResource extends Resource
      *
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\StatusListRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\StatusListRepresentation
      */
     public function getContactStatusList($parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -556,7 +556,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\StatusListRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\StatusListRepresentation', 'json');
             }
         }
 
@@ -568,7 +568,7 @@ class ContactsResource extends Resource
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Varspool\JobAdder\V2\Model\StatusRepresentation
+     * @return \Psr\Http\Message\ResponseInterface|\BenBorla\JobAdder\V2\Model\StatusRepresentation
      */
     public function getContactStatusListItem($statusId, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -586,7 +586,7 @@ class ContactsResource extends Resource
         $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Varspool\\JobAdder\\V2\\Model\\StatusRepresentation', 'json');
+                return $this->serializer->deserialize((string) $response->getBody(), 'BenBorla\\JobAdder\\V2\\Model\\StatusRepresentation', 'json');
             }
         }
 

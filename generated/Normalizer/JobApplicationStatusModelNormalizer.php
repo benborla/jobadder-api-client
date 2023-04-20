@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class JobApplicationStatusModelNormalizer extends SerializerAwareNormalizer impl
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\JobApplicationStatusModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationStatusModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class JobApplicationStatusModelNormalizer extends SerializerAwareNormalizer impl
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\JobApplicationStatusModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\JobApplicationStatusModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class JobApplicationStatusModelNormalizer extends SerializerAwareNormalizer impl
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\JobApplicationStatusModel();
+        $object = new \BenBorla\JobAdder\V2\Model\JobApplicationStatusModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -49,7 +49,7 @@ class JobApplicationStatusModelNormalizer extends SerializerAwareNormalizer impl
             $object->setDefault($data->{'default'});
         }
         if (property_exists($data, 'workflow')) {
-            $object->setWorkflow($this->serializer->deserialize($data->{'workflow'}, 'Varspool\\JobAdder\\V2\\Model\\JobApplicationWorkflowModel', 'raw', $context));
+            $object->setWorkflow($this->serializer->deserialize($data->{'workflow'}, 'BenBorla\\JobAdder\\V2\\Model\\JobApplicationWorkflowModel', 'raw', $context));
         }
 
         return $object;

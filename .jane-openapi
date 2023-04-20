@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => 'https://api.jobadder.com/v2/openapi.json',
-    'namespace'    => 'Varspool\JobAdder\V2',
+    'namespace'    => 'BenBorla\JobAdder\V2',
     'directory'    => __DIR__ . '/generated',
     'reference'    => true,
     'date-format'  => 'Y-m-d\TH:i:s', # elided timezone/UTC

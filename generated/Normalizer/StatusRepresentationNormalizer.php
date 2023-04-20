@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class StatusRepresentationNormalizer extends SerializerAwareNormalizer implement
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\StatusRepresentation') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\StatusRepresentation') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class StatusRepresentationNormalizer extends SerializerAwareNormalizer implement
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\StatusRepresentation) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\StatusRepresentation) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class StatusRepresentationNormalizer extends SerializerAwareNormalizer implement
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\StatusRepresentation();
+        $object = new \BenBorla\JobAdder\V2\Model\StatusRepresentation();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -49,7 +49,7 @@ class StatusRepresentationNormalizer extends SerializerAwareNormalizer implement
             $object->setDefault($data->{'default'});
         }
         if (property_exists($data, 'links')) {
-            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'Varspool\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
+            $object->setLinks($this->serializer->deserialize($data->{'links'}, 'BenBorla\\JobAdder\\V2\\Model\\ModelLinks', 'raw', $context));
         }
 
         return $object;

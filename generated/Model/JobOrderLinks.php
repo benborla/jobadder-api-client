@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Model;
+namespace BenBorla\JobAdder\V2\Model;
 
 class JobOrderLinks
 {

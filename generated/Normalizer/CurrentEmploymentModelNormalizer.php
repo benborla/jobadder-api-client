@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class CurrentEmploymentModelNormalizer extends SerializerAwareNormalizer impleme
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\CurrentEmploymentModel') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\CurrentEmploymentModel') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class CurrentEmploymentModelNormalizer extends SerializerAwareNormalizer impleme
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\CurrentEmploymentModel) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\CurrentEmploymentModel) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class CurrentEmploymentModelNormalizer extends SerializerAwareNormalizer impleme
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\CurrentEmploymentModel();
+        $object = new \BenBorla\JobAdder\V2\Model\CurrentEmploymentModel();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -43,10 +43,10 @@ class CurrentEmploymentModelNormalizer extends SerializerAwareNormalizer impleme
             $object->setPosition($data->{'position'});
         }
         if (property_exists($data, 'workType')) {
-            $object->setWorkType($this->serializer->deserialize($data->{'workType'}, 'Varspool\\JobAdder\\V2\\Model\\WorkTypeModel', 'raw', $context));
+            $object->setWorkType($this->serializer->deserialize($data->{'workType'}, 'BenBorla\\JobAdder\\V2\\Model\\WorkTypeModel', 'raw', $context));
         }
         if (property_exists($data, 'salary')) {
-            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'Varspool\\JobAdder\\V2\\Model\\SalaryModel', 'raw', $context));
+            $object->setSalary($this->serializer->deserialize($data->{'salary'}, 'BenBorla\\JobAdder\\V2\\Model\\SalaryModel', 'raw', $context));
         }
 
         return $object;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Varspool\JobAdder\V2\Normalizer;
+namespace BenBorla\JobAdder\V2\Normalizer;
 
 use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -11,7 +11,7 @@ class UpdateCompanyCommandNormalizer extends SerializerAwareNormalizer implement
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Varspool\\JobAdder\\V2\\Model\\UpdateCompanyCommand') {
+        if ($type !== 'BenBorla\\JobAdder\\V2\\Model\\UpdateCompanyCommand') {
             return false;
         }
 
@@ -20,7 +20,7 @@ class UpdateCompanyCommandNormalizer extends SerializerAwareNormalizer implement
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Varspool\JobAdder\V2\Model\UpdateCompanyCommand) {
+        if ($data instanceof \BenBorla\JobAdder\V2\Model\UpdateCompanyCommand) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class UpdateCompanyCommandNormalizer extends SerializerAwareNormalizer implement
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Varspool\JobAdder\V2\Model\UpdateCompanyCommand();
+        $object = new \BenBorla\JobAdder\V2\Model\UpdateCompanyCommand();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
@@ -48,7 +48,7 @@ class UpdateCompanyCommandNormalizer extends SerializerAwareNormalizer implement
         if (property_exists($data, 'customFields')) {
             $values = [];
             foreach ($data->{'customFields'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Varspool\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
+                $values[] = $this->serializer->deserialize($value, 'BenBorla\\JobAdder\\V2\\Model\\SubmitCustomFieldValueModel', 'raw', $context);
             }
             $object->setCustomFields($values);
         }
